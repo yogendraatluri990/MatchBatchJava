@@ -1,0 +1,140 @@
+﻿@model A9_Production.Register
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<div id="registerbox" class="jumbotron box effect4">
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.Message != null)
+    {
+      <div style="border:2px solid green">
+          <h2>@ViewBag.Message</h2>
+
+      </div>   
+        
+    }
+    <div class="form-horizontal ">
+       
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        <br />        
+        <div class="form-group" >          
+            <div class="col-md-offset-0 ">
+               <input name="FirstName" type="text" placeholder="FirstName"  style="width:300px; height:40px; border-radius:2px 2px ;"/>                
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger",@style="Font-Size:Large;" })
+            </div>
+        </div>
+        <div class="form-group">
+           <div class="col-md-offset-0 ">               
+               <input name="LastName" type="text" placeholder="LastName" style="width:300px; height:40px; border-radius:2px 2px;"/>
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+            </div>
+        </div>
+        <div class="form-group">
+               <div class="col-md-offset-0 ">
+               <input name="UserName" type="text" placeholder="UserName"  style="width:300px; height:40px; border-radius:2px 2px;"/>
+               @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+            </div>
+        </div>
+        <div class="form-group">
+             <div class="col-md-offset-0 ">
+                <input name="Password" type="password" placeholder="Password"  style="width:300px; height:40px; border-radius:2px 2px;"/>
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+            </div>
+        </div>
+        <div class="form-group">
+             <div class="col-md-offset-0 ">
+                <input name="ConfirmPassword" type="password" placeholder="ConfirmPassword" style="width:300px; height:40px; border-radius:2px 2px;" />
+               @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+            </div>
+        </div>
+        <div class="form-group">           
+            <div class="col-md-offset-0 ">              
+                <input id="DOB" name="DateOFBirth" type="datetime" placeholder="Date Of Birth" style="width:300px; height:40px; border-radius:2px 2px; " />
+                @Html.ValidationMessageFor(model => model.DateOFBirth, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+            </div>
+        </div>
+        <div class="form-group">
+               <div class="col-md-offset-0 ">
+                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @Id="Gender",@class = "form-control",@style="width:300px;height:60px;margin-left:60px;" } })
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+         <div class="col-md-offset-0">
+                <input name="MOBILE" type="tel" maxlength="12" placeholder="Mobile No" style="width:300px; height:40px; border-radius:2px 2px;" />
+                @Html.ValidationMessageFor(model => model.MOBILE, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-0">
+               <input type="email" name="Email" placeholder="EmailId"  style="width:300px; height:40px; border-radius:2px 2px;"/>
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Agree Terms and Conditions", htmlAttributes: new { @class = "control-label col-md-3", @style = "Font-Size:Large;color:white;;margin-left:30px;" })
+            <div class="col-md-2">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.ISACTIVE, new { htmlAttributes = new { @style="Font-Size:Large" } })
+                    @Html.ValidationMessageFor(model => model.ISACTIVE, "", new { @class = "text-danger", @style = "Font-Size:Large;" })
+                </div>
+            </div>
+        </div>
+          <div class="form-group">
+            <div class="col-md-1">
+                <input type="submit" value="Register" class="btn btn-success" style="width:150px; font-size:x-large;" />
+            </div>
+        </div>
+    </div>
+    <style>
+        .k-textbox{
+            width:300px;
+            height:40px;
+            font-size:large;
+         }
+        .k-datetimepicker{
+
+            width:250px;
+            height:40px;
+            font-size:large;
+           }         
+      
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#DOB").kendoDateTimePicker();
+
+            $("#Gender").kendoDropDownList({
+                dataTextField: "GenderName",
+                dataValueField: "GenderName",
+                optionLabel: "Select Gender",
+                dataSource: {
+                    transport: {
+                        read: {
+                            datatype: "Json",
+                            url: '@Url.Action("Gender","Account")'
+                        }
+                    }
+                }
+            });
+            $("#registerbox").css('margin-top',50);
+        });
+    </script> 
+    <style>
+        .registerBox{
+            background-color:#7ABA7A;
+        }
+    </style> 
+    
+} 
+    </div>
+    
+
+

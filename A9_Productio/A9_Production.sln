@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A9_Production", "A9_Production\A9_Production.csproj", "{E3E3C72E-2C90-43C6-843E-F116F810B14C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A9_ProductionTests", "A9_ProductionTests\A9_ProductionTests.csproj", "{2EC6B3C2-A103-4778-A37E-4B05129E9CC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A9_Production.OpenAccess", "A9_Production.OpenAccess\A9_Production.OpenAccess.csproj", "{6F9C2621-695C-4BDE-881B-157DCAA75C07}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://a9softwares.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = A9_Production\\A9_Production.csproj
+		SccProjectName1 = A9_Production
+		SccLocalPath1 = A9_Production
+		SccProjectUniqueName2 = A9_ProductionTests\\A9_ProductionTests.csproj
+		SccProjectName2 = A9_ProductionTests
+		SccLocalPath2 = A9_ProductionTests
+		SccProjectUniqueName3 = A9_Production.OpenAccess\\A9_Production.OpenAccess.csproj
+		SccProjectName3 = A9_Production.OpenAccess
+		SccLocalPath3 = A9_Production.OpenAccess
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3E3C72E-2C90-43C6-843E-F116F810B14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E3C72E-2C90-43C6-843E-F116F810B14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E3C72E-2C90-43C6-843E-F116F810B14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E3C72E-2C90-43C6-843E-F116F810B14C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EC6B3C2-A103-4778-A37E-4B05129E9CC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EC6B3C2-A103-4778-A37E-4B05129E9CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EC6B3C2-A103-4778-A37E-4B05129E9CC8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2EC6B3C2-A103-4778-A37E-4B05129E9CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EC6B3C2-A103-4778-A37E-4B05129E9CC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EC6B3C2-A103-4778-A37E-4B05129E9CC8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6F9C2621-695C-4BDE-881B-157DCAA75C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9C2621-695C-4BDE-881B-157DCAA75C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9C2621-695C-4BDE-881B-157DCAA75C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9C2621-695C-4BDE-881B-157DCAA75C07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

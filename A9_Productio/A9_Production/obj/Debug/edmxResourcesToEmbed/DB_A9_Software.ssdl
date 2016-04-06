@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A9_SoftwareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+    <Property Name="HouseNumber" Type="nvarchar" MaxLength="500" />
+    <Property Name="Street" Type="nvarchar" MaxLength="500" />
+    <Property Name="City" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="nvarchar" MaxLength="200" />
+    <Property Name="Country" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="60" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Country_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Country_Code" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GenderCode" Type="nvarchar" MaxLength="6" />
+    <Property Name="GenderName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="GROUP">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="60" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="GroupMember" Type="nvarchar" MaxLength="60" />
+    <Property Name="LOGO" Type="image" />
+    <Property Name="ISTACTIVE" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Group_ID" Type="int" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImageGallery">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSize" Type="int" />
+    <Property Name="FileName" Type="varchar" MaxLength="200" />
+    <Property Name="ImageDate" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedON" Type="datetime" />
+    <Property Name="UpdatedON" Type="datetime" />
+    <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Username" Type="nvarchar" MaxLength="60" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOFBirth" Type="date" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="16" />
+    <Property Name="MOBILE" Type="nvarchar" MaxLength="30" />
+    <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="60" />
+    <Property Name="Role_Id" Type="int" />
+    <Property Name="CanLogin" Type="bit" />
+    <Property Name="IsAdmin" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="60" />
+    <Property Name="CanLogin" Type="bit" />
+    <Property Name="IsAdmin" Type="bit" />
+    <Property Name="RegisterId" Type="int" />
+  </EntityType>
+  <Association Name="FK__User__RegisterId__0A9D95DB">
+    <End Role="Register" Type="Self.Register" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Register">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RegisterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUPID">
+    <End Role="GROUP" Type="Self.GROUP" Multiplicity="0..1" />
+    <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUP">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group_User">
+        <PropertyRef Name="Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Lookup_ID">
+    <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_ID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group_User">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_A9_SoftwareModelStoreContainer">
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GROUP" EntityType="Self.GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group_User" EntityType="Self.Group_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageGallery" EntityType="Self.ImageGallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Register" EntityType="Self.Register" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__User__RegisterId__0A9D95DB" Association="Self.FK__User__RegisterId__0A9D95DB">
+      <End Role="Register" EntitySet="Register" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="GROUPID" Association="Self.GROUPID">
+      <End Role="GROUP" EntitySet="GROUP" />
+      <End Role="Group_User" EntitySet="Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="Lookup_ID" Association="Self.Lookup_ID">
+      <End Role="Lookup" EntitySet="Lookup" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="User_ID" Association="Self.User_ID">
+      <End Role="User" EntitySet="User" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="UserID" Association="Self.UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="Group_User" EntitySet="Group_User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

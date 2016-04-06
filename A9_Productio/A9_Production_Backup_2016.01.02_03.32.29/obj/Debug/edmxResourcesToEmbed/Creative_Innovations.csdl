@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Creative_InnovationsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Creative_InnovationsEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Creating_Contact" />
+    <FunctionImport Name="Creating_User" />
+    <EntitySet Name="Attachments" EntityType="Creative_InnovationsModel.Attachment" />
+    <EntitySet Name="BankTransfers" EntityType="Creative_InnovationsModel.BankTransfer" />
+    <EntitySet Name="Card_Type" EntityType="Creative_InnovationsModel.Card_Type" />
+    <EntitySet Name="Categories" EntityType="Creative_InnovationsModel.Category" />
+    <EntitySet Name="Contacts" EntityType="Creative_InnovationsModel.Contact" />
+    <EntitySet Name="Countries" EntityType="Creative_InnovationsModel.Country" />
+    <EntitySet Name="Friend_List" EntityType="Creative_InnovationsModel.Friend_List" />
+    <EntitySet Name="Friends" EntityType="Creative_InnovationsModel.Friend" />
+    <EntitySet Name="Genders" EntityType="Creative_InnovationsModel.Gender" />
+    <EntitySet Name="GROUPs" EntityType="Creative_InnovationsModel.GROUP" />
+    <EntitySet Name="Group_User" EntityType="Creative_InnovationsModel.Group_User" />
+    <EntitySet Name="Items" EntityType="Creative_InnovationsModel.Item" />
+    <EntitySet Name="Items_Category" EntityType="Creative_InnovationsModel.Items_Category" />
+    <EntitySet Name="Lookups" EntityType="Creative_InnovationsModel.Lookup" />
+    <EntitySet Name="Payments" EntityType="Creative_InnovationsModel.Payment" />
+    <EntitySet Name="PaymentTypes" EntityType="Creative_InnovationsModel.PaymentType" />
+    <EntitySet Name="Registers" EntityType="Creative_InnovationsModel.Register" />
+    <EntitySet Name="Shipping_Address" EntityType="Creative_InnovationsModel.Shipping_Address" />
+    <EntitySet Name="Users" EntityType="Creative_InnovationsModel.User" />
+    <AssociationSet Name="GROUP_ATTACHMENT" Association="Creative_InnovationsModel.GROUP_ATTACHMENT">
+      <End Role="Attachment" EntitySet="Attachments" />
+      <End Role="GROUP" EntitySet="GROUPs" />
+    </AssociationSet>
+    <AssociationSet Name="PAYMENTTYPE_BANKTRANSFER" Association="Creative_InnovationsModel.PAYMENTTYPE_BANKTRANSFER">
+      <End Role="BankTransfer" EntitySet="BankTransfers" />
+      <End Role="PaymentType" EntitySet="PaymentTypes" />
+    </AssociationSet>
+    <AssociationSet Name="PAYMENTTYPE_CARDTYPE" Association="Creative_InnovationsModel.PAYMENTTYPE_CARDTYPE">
+      <End Role="Card_Type" EntitySet="Card_Type" />
+      <End Role="PaymentType" EntitySet="PaymentTypes" />
+    </AssociationSet>
+    <AssociationSet Name="ITEMSCATEGORY_ID" Association="Creative_InnovationsModel.ITEMSCATEGORY_ID">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Items_Category" EntitySet="Items_Category" />
+    </AssociationSet>
+    <AssociationSet Name="Contact_Id" Association="Creative_InnovationsModel.Contact_Id">
+      <End Role="Contact" EntitySet="Contacts" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Friends_Id" Association="Creative_InnovationsModel.Friends_Id">
+      <End Role="Contact" EntitySet="Contacts" />
+      <End Role="Friend" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="Register_Id" Association="Creative_InnovationsModel.Register_Id">
+      <End Role="Register" EntitySet="Registers" />
+      <End Role="Contact" EntitySet="Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="GROUP_FRIEND" Association="Creative_InnovationsModel.GROUP_FRIEND">
+      <End Role="Friend" EntitySet="Friends" />
+      <End Role="GROUP" EntitySet="GROUPs" />
+    </AssociationSet>
+    <AssociationSet Name="GROUPUSER_GROUPID" Association="Creative_InnovationsModel.GROUPUSER_GROUPID">
+      <End Role="GROUP" EntitySet="GROUPs" />
+      <End Role="Group_User" EntitySet="Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="GROUP_USERID" Association="Creative_InnovationsModel.GROUP_USERID">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Group_User" EntitySet="Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="ITEMSCATEGORY_ITEMSID" Association="Creative_InnovationsModel.ITEMSCATEGORY_ITEMSID">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="Items_Category" EntitySet="Items_Category" />
+    </AssociationSet>
+    <AssociationSet Name="LookUp_Id" Association="Creative_InnovationsModel.LookUp_Id">
+      <End Role="Lookup" EntitySet="Lookups" />
+      <End Role="Register" EntitySet="Registers" />
+    </AssociationSet>
+    <AssociationSet Name="Role_Id" Association="Creative_InnovationsModel.Role_Id">
+      <End Role="Lookup" EntitySet="Lookups" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="PAYMENT_PAYMENTTYPE" Association="Creative_InnovationsModel.PAYMENT_PAYMENTTYPE">
+      <End Role="PaymentType" EntitySet="PaymentTypes" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="SHOPPING_USERID" Association="Creative_InnovationsModel.SHOPPING_USERID">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="Registers_Id" Association="Creative_InnovationsModel.Registers_Id">
+      <End Role="Register" EntitySet="Registers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="ShippingAddress_UserID" Association="Creative_InnovationsModel.ShippingAddress_UserID">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Shipping_Address" EntitySet="Shipping_Address" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Attachment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Images" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Pdf_Files" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Mp_Three" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Video_Files" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ZipFiles" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Html_Files" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TextFiles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Doc_Files" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="XcelSheets" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PSD_Extensions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="All_Files" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="GROUPs" Relationship="Creative_InnovationsModel.GROUP_ATTACHMENT" FromRole="Attachment" ToRole="GROUP" />
+  </EntityType>
+  <EntityType Name="BankTransfer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Account_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Account_Number" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Bank_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Swift_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IFSC_Code" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Day" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PaymentTypes" Relationship="Creative_InnovationsModel.PAYMENTTYPE_BANKTRANSFER" FromRole="BankTransfer" ToRole="PaymentType" />
+  </EntityType>
+  <EntityType Name="Card_Type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Card_Type1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Card_Number" Type="Int32" />
+    <Property Name="Name_On_Card" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Expiry_Date" Type="DateTime" Precision="0" />
+    <Property Name="CVV" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="PaymentTypes" Relationship="Creative_InnovationsModel.PAYMENTTYPE_CARDTYPE" FromRole="Card_Type" ToRole="PaymentType" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Items_Category" Relationship="Creative_InnovationsModel.ITEMSCATEGORY_ID" FromRole="Category" ToRole="Items_Category" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LandLine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="EmailAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Register_Id" Type="Int32" />
+    <Property Name="Can_Login" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="IsUser" Type="Boolean" />
+    <Property Name="Role_Code" Type="Int32" />
+    <Property Name="Lookup_Id" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Created_On" Type="DateTime" Precision="3" />
+    <Property Name="Updated_On" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="Creative_InnovationsModel.Contact_Id" FromRole="Contact" ToRole="User" />
+    <NavigationProperty Name="Friends" Relationship="Creative_InnovationsModel.Friends_Id" FromRole="Contact" ToRole="Friend" />
+    <NavigationProperty Name="Register" Relationship="Creative_InnovationsModel.Register_Id" FromRole="Contact" ToRole="Register" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Country_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Country_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Friend_List">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FriendName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Friend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Friend_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Contact_Id" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Contact" Relationship="Creative_InnovationsModel.Friends_Id" FromRole="Friend" ToRole="Contact" />
+    <NavigationProperty Name="GROUPs" Relationship="Creative_InnovationsModel.GROUP_FRIEND" FromRole="Friend" ToRole="GROUP" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GENDER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GROUP">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Group_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Friend_Id" Type="Int32" />
+    <Property Name="Group_Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Attachment_Id" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Attachment" Relationship="Creative_InnovationsModel.GROUP_ATTACHMENT" FromRole="GROUP" ToRole="Attachment" />
+    <NavigationProperty Name="Friend" Relationship="Creative_InnovationsModel.GROUP_FRIEND" FromRole="GROUP" ToRole="Friend" />
+    <NavigationProperty Name="Group_User" Relationship="Creative_InnovationsModel.GROUPUSER_GROUPID" FromRole="GROUP" ToRole="Group_User" />
+  </EntityType>
+  <EntityType Name="Group_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="Int32" />
+    <Property Name="Group_Id" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GROUP" Relationship="Creative_InnovationsModel.GROUPUSER_GROUPID" FromRole="Group_User" ToRole="GROUP" />
+    <NavigationProperty Name="User" Relationship="Creative_InnovationsModel.GROUP_USERID" FromRole="Group_User" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Item_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Specifications" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Items_Category" Relationship="Creative_InnovationsModel.ITEMSCATEGORY_ITEMSID" FromRole="Item" ToRole="Items_Category" />
+  </EntityType>
+  <EntityType Name="Items_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_Id" Type="Int32" />
+    <Property Name="Category_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Items_Id" Type="Int32" />
+    <Property Name="Item_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Creative_InnovationsModel.ITEMSCATEGORY_ID" FromRole="Items_Category" ToRole="Category" />
+    <NavigationProperty Name="Item" Relationship="Creative_InnovationsModel.ITEMSCATEGORY_ITEMSID" FromRole="Items_Category" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RollName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="Updatedon" Type="DateTime" Precision="0" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Registers" Relationship="Creative_InnovationsModel.LookUp_Id" FromRole="Lookup" ToRole="Register" />
+    <NavigationProperty Name="Users" Relationship="Creative_InnovationsModel.Role_Id" FromRole="Lookup" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="Int32" />
+    <Property Name="Payment_Type" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PaymentType" Relationship="Creative_InnovationsModel.PAYMENT_PAYMENTTYPE" FromRole="Payment" ToRole="PaymentType" />
+    <NavigationProperty Name="User" Relationship="Creative_InnovationsModel.SHOPPING_USERID" FromRole="Payment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="PaymentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankTransfer_Id" Type="Int32" />
+    <Property Name="Card_Type" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BankTransfer" Relationship="Creative_InnovationsModel.PAYMENTTYPE_BANKTRANSFER" FromRole="PaymentType" ToRole="BankTransfer" />
+    <NavigationProperty Name="Card_Type1" Relationship="Creative_InnovationsModel.PAYMENTTYPE_CARDTYPE" FromRole="PaymentType" ToRole="Card_Type" />
+    <NavigationProperty Name="Payments" Relationship="Creative_InnovationsModel.PAYMENT_PAYMENTTYPE" FromRole="PaymentType" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="LandLine" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="Password" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Can_Login" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="IsUser" Type="Boolean" />
+    <Property Name="Created_On" Type="DateTime" Precision="0" />
+    <Property Name="Updated_On" Type="DateTime" Precision="0" />
+    <Property Name="Role_Code" Type="Int32" />
+    <Property Name="Lookup_Id" Type="Int32" />
+    <NavigationProperty Name="Contacts" Relationship="Creative_InnovationsModel.Register_Id" FromRole="Register" ToRole="Contact" />
+    <NavigationProperty Name="Lookup" Relationship="Creative_InnovationsModel.LookUp_Id" FromRole="Register" ToRole="Lookup" />
+    <NavigationProperty Name="Users" Relationship="Creative_InnovationsModel.Registers_Id" FromRole="Register" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Shipping_Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="Int32" />
+    <Property Name="BuildingNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile_Number" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Land_Line" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Creative_InnovationsModel.ShippingAddress_UserID" FromRole="Shipping_Address" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact_Id" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Register_Id" Type="Int32" />
+    <Property Name="Firstname" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="CanLogin" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="IsUser" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Contact" Relationship="Creative_InnovationsModel.Contact_Id" FromRole="User" ToRole="Contact" />
+    <NavigationProperty Name="Group_User" Relationship="Creative_InnovationsModel.GROUP_USERID" FromRole="User" ToRole="Group_User" />
+    <NavigationProperty Name="Lookup" Relationship="Creative_InnovationsModel.Role_Id" FromRole="User" ToRole="Lookup" />
+    <NavigationProperty Name="Payments" Relationship="Creative_InnovationsModel.SHOPPING_USERID" FromRole="User" ToRole="Payment" />
+    <NavigationProperty Name="Register" Relationship="Creative_InnovationsModel.Registers_Id" FromRole="User" ToRole="Register" />
+    <NavigationProperty Name="Shipping_Address" Relationship="Creative_InnovationsModel.ShippingAddress_UserID" FromRole="User" ToRole="Shipping_Address" />
+  </EntityType>
+  <Association Name="GROUP_ATTACHMENT">
+    <End Type="Creative_InnovationsModel.Attachment" Role="Attachment" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.GROUP" Role="GROUP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attachment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GROUP">
+        <PropertyRef Name="Attachment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAYMENTTYPE_BANKTRANSFER">
+    <End Type="Creative_InnovationsModel.BankTransfer" Role="BankTransfer" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.PaymentType" Role="PaymentType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BankTransfer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentType">
+        <PropertyRef Name="BankTransfer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAYMENTTYPE_CARDTYPE">
+    <End Type="Creative_InnovationsModel.Card_Type" Role="Card_Type" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.PaymentType" Role="PaymentType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card_Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentType">
+        <PropertyRef Name="Card_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ITEMSCATEGORY_ID">
+    <End Type="Creative_InnovationsModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Items_Category" Role="Items_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Items_Category">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Contact_Id">
+    <End Type="Creative_InnovationsModel.Contact" Role="Contact" Multiplicity="1" />
+    <End Type="Creative_InnovationsModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Contact_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Friends_Id">
+    <End Type="Creative_InnovationsModel.Contact" Role="Contact" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Friend" Role="Friend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Friend">
+        <PropertyRef Name="Contact_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Register_Id">
+    <End Type="Creative_InnovationsModel.Register" Role="Register" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Contact" Role="Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Register">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="Register_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUP_FRIEND">
+    <End Type="Creative_InnovationsModel.Friend" Role="Friend" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.GROUP" Role="GROUP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Friend">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GROUP">
+        <PropertyRef Name="Friend_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUPUSER_GROUPID">
+    <End Type="Creative_InnovationsModel.GROUP" Role="GROUP" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Group_User" Role="Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUP">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group_User">
+        <PropertyRef Name="Group_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUP_USERID">
+    <End Type="Creative_InnovationsModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Group_User" Role="Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group_User">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ITEMSCATEGORY_ITEMSID">
+    <End Type="Creative_InnovationsModel.Item" Role="Item" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Items_Category" Role="Items_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Items_Category">
+        <PropertyRef Name="Items_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LookUp_Id">
+    <End Type="Creative_InnovationsModel.Lookup" Role="Lookup" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Register" Role="Register" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Register">
+        <PropertyRef Name="Lookup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Role_Id">
+    <End Type="Creative_InnovationsModel.Lookup" Role="Lookup" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAYMENT_PAYMENTTYPE">
+    <End Type="Creative_InnovationsModel.PaymentType" Role="PaymentType" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Payment_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SHOPPING_USERID">
+    <End Type="Creative_InnovationsModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Registers_Id">
+    <End Type="Creative_InnovationsModel.Register" Role="Register" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Register">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Register_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShippingAddress_UserID">
+    <End Type="Creative_InnovationsModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Creative_InnovationsModel.Shipping_Address" Role="Shipping_Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shipping_Address">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

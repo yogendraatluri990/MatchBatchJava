@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6101278ea5b544c691e463691c1883cb" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Country" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Gender" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.GROUP" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Group_User" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.ImageGallery" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Lookup" Width="1.5" PointX="5.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Register" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.User" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.sysdiagram" Width="1.5" PointX="7.75" PointY="6.75" />
+        <AssociationConnector Association="DB_A9_SoftwareModel.GROUPID" />
+        <AssociationConnector Association="DB_A9_SoftwareModel.USER_ID_USER_FKY" />
+        <AssociationConnector Association="DB_A9_SoftwareModel.USER_REGISTER_ID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

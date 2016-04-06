@@ -1,0 +1,49 @@
+﻿<div class="navbar-collapse collapse">
+   
+        @if (Session["LoggedId"] != null)
+        {
+            <ul class="nav navbar-nav nav-pills">
+                <li><a href="@Url.Action("Index", "ShoppingCart")" style="font-size:large;font-style:normal;color:#ffffff; font-family:'Times New Roman'"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping</a></li>
+                <li><a href="@Url.Action("About","Home")" style="font-size:large;color:#ffffff;font-family:'Times New Roman'"><span class="glyphicon glyphicon-piggy-bank"></span> Banking</a></li>
+                <li><a href="@Url.Action("Contact", "Home")" style="font-size:large;color:#ffffff;font-family:'Times New Roman'"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+
+
+                
+            </ul>
+        }
+        else 
+        {
+      <ul class="nav navbar-nav nav-pills">
+                  <li><a href="@Url.Action("Index","Home")" style="font-size:large; font-style:normal;color:#ffffff;font-family:'Times New Roman'"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="@Url.Action("About", "Home")"style="font-size:large;color:#ffffff;font-family:'Times New Roman'" ><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+        <li><a href="@Url.Action("Contact", "Home")" style="font-size:large;color:#ffffff;font-family:'Times New Roman', Times, serif"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+
+        </ul>
+        }
+    @if (Session["LoggedId"] != null)
+    {
+
+        @Html.Partial("_LoggOffPartial")
+
+
+    }
+    else
+    {
+
+
+
+        @Html.Partial("_LoginPartial")
+
+
+    }
+    </div>
+
+<style scoped>
+
+    a{
+
+        text-decoration:none;
+    }
+
+</style>
+

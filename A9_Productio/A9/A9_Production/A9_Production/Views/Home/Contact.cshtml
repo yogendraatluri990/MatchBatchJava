@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<div id ="Contact"class="jumbotron effect4">
+
+<br />
+
+    @(Html.Kendo().TabStrip()
+        .Name("ContactsTabStrip")
+        .Items(items =>
+        {
+            items.Add()
+                .Text("Phone")
+                .Selected(true)
+                .Content(@<text>
+                   
+                    <p>
+                     <span>Mobile:- +1(669)-235-0344</span>
+                    </p>
+                </text>)
+                .ContentHtmlAttributes(new { style = "min-height: 200px" });
+            items.Add()
+                .Text("Email")
+                .Content(@<text>
+                    <p>
+                      <span class="glyphicon glyphicon-envelope"><a href="#">A9_Productions.com</a></span>
+                    </p>
+                   
+                    
+                </text>)
+                .ContentHtmlAttributes(new { style = "min-height: 200px" });
+            items.Add()
+                .Text("Address")
+                .Content(@<text>
+                    <p class="glyhicon">
+                        Unit Number:- #172<br />
+                    
+                        Mowry Avenue <br />
+                        Fremont
+                        <br />
+                        CA <br/>
+                        ZIPCODE:- 94536 <br/>
+                        United States Of America<br />
+                                             
+                    </p>
+                </text>)
+                .ContentHtmlAttributes(new { style = "min-height: 200px" });
+        })
+    )
+
+<style>
+
+    span{
+        font-family:'Times New Roman';
+        font-size:x-large;
+    }
+    p{
+        font-size:x-large;
+        font-family:'Times New Roman';
+
+    }
+</style>
+    <script>
+        $(document).ready(function () {
+            $("#Contact").css('margin-top', 100);
+        });
+    </script>
+</div>

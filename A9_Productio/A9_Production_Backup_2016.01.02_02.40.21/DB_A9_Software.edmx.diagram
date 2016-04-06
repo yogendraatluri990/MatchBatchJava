@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1286b151e1eb44da9f9a8b0112feb2a3" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Contact" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Country" Width="1.5" PointX="5.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Gender" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.GROUP" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Group_User" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.ImageGallery" Width="1.5" PointX="2.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Lookup" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.Register" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.sysdiagram" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A9_SoftwareModel.User" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="DB_A9_SoftwareModel.User_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A9_SoftwareModel.GROUPID" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A9_SoftwareModel.UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A9_SoftwareModel.Lookup_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A9_SoftwareModel.FK__User__RegisterId__0A9D95DB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

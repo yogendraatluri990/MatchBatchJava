@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+
+    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right nav-pills">
+            @if (Session["LoggedUserName"] != null)
+            {
+                <li> <text>Welcome @Session["LoggedUserName"].ToString() </text></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            }
+        </ul>
+    }
+}
+else
+{
+
+    <ul class="nav navbar-nav navbar-right nav-pills">
+
+
+        @if (Session["LoggedId"] != null )
+        {
+           @*<li>
+         @Html.ActionLink("EditProfile", "UpdateContact", "AfterLogin", new { area = "" }, new {@Id="EditProfile", @class="navbar-brand",@style="font-family:Times New Roman;font-size:large;color:white"})</li>*@
+            <li>@Html.ActionLink(@Session["LoggedUserName"].ToString(), "After_Login", "AfterLogin", new { area = "" }, new { @class = "navbar-brand", @style = "font-family:Times New Roman;font-size:large;color:white" })</li>
+
+
+            <li>@Html.ActionLink(" ", "Logoff", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "glyphicon glyphicon-off", @style = "font-Size:large;color:white" })</li>
+
+        }
+    </ul>
+    
+
+
+}
+
+
+
+

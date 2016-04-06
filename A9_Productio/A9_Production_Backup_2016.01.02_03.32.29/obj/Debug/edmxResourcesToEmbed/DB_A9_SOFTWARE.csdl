@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A9_SoftwareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HouseNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.User_ID" FromRole="Contact" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Country_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Country_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenderCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="GenderName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GROUP">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="GroupMember" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="LOGO" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ISTACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Group_User" Relationship="Self.GROUPID" FromRole="GROUP" ToRole="Group_User" />
+  </EntityType>
+  <EntityType Name="Group_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Group_ID" Type="Int32" />
+    <Property Name="User_Id" Type="Int32" />
+    <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="GROUP" Relationship="Self.GROUPID" FromRole="Group_User" ToRole="GROUP" />
+    <NavigationProperty Name="User" Relationship="Self.UserID" FromRole="Group_User" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ImageGallery">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageSize" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ImageDate" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedON" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedON" Type="DateTime" Precision="3" />
+    <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.Lookup_ID" FromRole="Lookup" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOFBirth" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="MOBILE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Role_Id" Type="Int32" />
+    <Property Name="CanLogin" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__User__RegisterId__0A9D95DB" FromRole="Register" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="CanLogin" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="RegisterId" Type="Int32" />
+    <NavigationProperty Name="Contacts" Relationship="Self.User_ID" FromRole="User" ToRole="Contact" />
+    <NavigationProperty Name="Group_User" Relationship="Self.UserID" FromRole="User" ToRole="Group_User" />
+    <NavigationProperty Name="Lookup" Relationship="Self.Lookup_ID" FromRole="User" ToRole="Lookup" />
+    <NavigationProperty Name="Register" Relationship="Self.FK__User__RegisterId__0A9D95DB" FromRole="User" ToRole="Register" />
+  </EntityType>
+  <Association Name="User_ID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUPID">
+    <End Role="GROUP" Type="Self.GROUP" Multiplicity="0..1" />
+    <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUP">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group_User">
+        <PropertyRef Name="Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group_User">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Lookup_ID">
+    <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__RegisterId__0A9D95DB">
+    <End Role="Register" Type="Self.Register" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Register">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RegisterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_A9_SoftwareEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Genders" EntityType="Self.Gender" />
+    <EntitySet Name="GROUPs" EntityType="Self.GROUP" />
+    <EntitySet Name="Group_User" EntityType="Self.Group_User" />
+    <EntitySet Name="ImageGalleries" EntityType="Self.ImageGallery" />
+    <EntitySet Name="Lookups" EntityType="Self.Lookup" />
+    <EntitySet Name="Registers" EntityType="Self.Register" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="User_ID" Association="Self.User_ID">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Contact" EntitySet="Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="GROUPID" Association="Self.GROUPID">
+      <End Role="GROUP" EntitySet="GROUPs" />
+      <End Role="Group_User" EntitySet="Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="UserID" Association="Self.UserID">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Group_User" EntitySet="Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="Lookup_ID" Association="Self.Lookup_ID">
+      <End Role="Lookup" EntitySet="Lookups" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__RegisterId__0A9D95DB" Association="Self.FK__User__RegisterId__0A9D95DB">
+      <End Role="Register" EntitySet="Registers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

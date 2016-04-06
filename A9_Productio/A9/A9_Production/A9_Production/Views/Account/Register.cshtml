@@ -1,0 +1,131 @@
+﻿@model A9_Production.Register
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div id="register"class="jumbotron effect4">
+        <div class="form-horizontal">
+            <div class="row container">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.Label("First Name", htmlAttributes: new { @class = "control-label col-md-2 "})*@
+                <div class="col-md-10">
+                    <input name="First_Name" type="text" placeholder="FirstName" style="width:300px; height:40px; border-radius:2px 2px ;" />
+                    
+                    @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+               
+                <div class="col-md-10">
+                    <input name="Last_Name" type="text" placeholder="LastName" style="width:300px; height:40px; border-radius:2px 2px;" />
+                    @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                
+                <div class="col-md-10">
+                    <input type="email" name="Email" placeholder="EmailId" style="width:300px; height:40px; border-radius:2px 2px;" />
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+               
+                <div class="col-md-10">
+                    <input name="Password" type="password" placeholder="Password" style="width:300px; height:40px; border-radius:2px 2px;" />
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+               
+                <div class="col-md-10">
+                    <input name="ConfirmPassword" type="password" placeholder="ConfirmPassword" style="width:300px; height:40px; border-radius:2px 2px;" />
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+               
+                <div class="col-md-10">
+                    <input name="DOB"   id="DateofBirth" placeholder="Date of Birth" style="width:300px; height:40px; border-radius:2px 2px;" />
+                           @*@Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" ,@style="width:120px;",@id="DateofBirth"} })*@
+                           @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+               
+                <div class="col-md-10">
+                    
+                    @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @ID = "Gender", @class = "form-control", @style = "width:120px;" } })
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+               
+                <div >
+                    @Html.Label("Terms and Conditions", htmlAttributes: new { @class = "col-md-2" })
+                    <div class="checkbox">
+                        
+                        @Html.EditorFor(model => model.ISACTIVE, new { htmlAttributes = new { @clas="form-control col-md-4" } })
+                        @Html.ValidationMessageFor(model => model.ISACTIVE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <input id="registerbutton" type="submit" value="Register" class="btn btn-success"  style="width:180px;"/>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    <style>
+        .k-textbox {
+            width: 300px;
+            height: 40px;
+            font-size: large;
+        }
+
+        .k-datetimepicker {
+            width: 250px;
+            height: 40px;
+            font-size: large;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#DateofBirth").kendoDatePicker();
+
+            $("#Gender").kendoDropDownList({
+                dataTextField: "GenderName",
+                dataValueField: "GenderName",
+                optionLabel: "Select Gender",
+                dataSource: {
+                    transport: {
+                        read: {
+                            datatype: "Json",
+                            url: '@Url.Action("Gender","Account")'
+                        }
+                    }
+                }
+            });
+            $("#register").css('margin-top', 100);
+            $("#registerbutton").css('margin-left', 60);
+        });
+
+    </script>
+    
+
+}
+

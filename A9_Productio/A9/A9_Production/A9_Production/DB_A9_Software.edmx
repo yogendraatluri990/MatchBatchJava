@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A9_SoftwareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country_Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Country_Code" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenderCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="GenderName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="GROUP">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="60" />
+          <Property Name="AdminId" Type="int" />
+          <Property Name="GroupMember" Type="nvarchar" MaxLength="60" />
+          <Property Name="LOGO" Type="image" />
+          <Property Name="ISTACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Group_ID" Type="int" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="USER_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ImageGallery">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageSize" Type="int" />
+          <Property Name="FileName" Type="varchar" MaxLength="200" />
+          <Property Name="ImageDate" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedON" Type="datetime" />
+          <Property Name="UpdatedON" Type="datetime" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Register">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+          <Property Name="CanLogin" Type="bit" Nullable="false" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A9_Software.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CanLogin" Type="bit" Nullable="false" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="Register_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="GROUPID">
+          <End Role="GROUP" Type="Self.GROUP" Multiplicity="0..1" />
+          <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUP">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group_User">
+              <PropertyRef Name="Group_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'USER_ID_REGISTER_KY' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="USER_ID_REGISTER_KY" />-->
+        <Association Name="USER_ID_USER_FKY">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group_User">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USER_REGISTER_ID">
+          <End Role="Register" Type="Self.Register" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Register">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Register_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Updating_Contact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Updating_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DB_A9_SoftwareModelStoreContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GROUP" EntityType="Self.GROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_User" EntityType="Self.Group_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageGallery" EntityType="Self.ImageGallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Register" EntityType="Self.Register" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[sysdiagrams].[name] AS [name], 
+[sysdiagrams].[principal_id] AS [principal_id], 
+[sysdiagrams].[diagram_id] AS [diagram_id], 
+[sysdiagrams].[version] AS [version], 
+[sysdiagrams].[definition] AS [definition]
+FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="GROUPID" Association="Self.GROUPID">
+            <End Role="GROUP" EntitySet="GROUP" />
+            <End Role="Group_User" EntitySet="Group_User" />
+          </AssociationSet>
+          <AssociationSet Name="USER_ID_USER_FKY" Association="Self.USER_ID_USER_FKY">
+            <End Role="User" EntitySet="User" />
+            <End Role="Group_User" EntitySet="Group_User" />
+          </AssociationSet>
+          <AssociationSet Name="USER_REGISTER_ID" Association="Self.USER_REGISTER_ID">
+            <End Role="Register" EntitySet="Register" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A9_SoftwareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_A9_SoftwareEntities4" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Updating_Contact" />
+          <FunctionImport Name="Updating_User" />
+          <EntitySet Name="Countries" EntityType="DB_A9_SoftwareModel.Country" />
+          <EntitySet Name="Genders" EntityType="DB_A9_SoftwareModel.Gender" />
+          <EntitySet Name="GROUPs" EntityType="DB_A9_SoftwareModel.GROUP" />
+          <EntitySet Name="Group_User" EntityType="DB_A9_SoftwareModel.Group_User" />
+          <EntitySet Name="ImageGalleries" EntityType="DB_A9_SoftwareModel.ImageGallery" />
+          <EntitySet Name="Lookups" EntityType="DB_A9_SoftwareModel.Lookup" />
+          <EntitySet Name="Registers" EntityType="DB_A9_SoftwareModel.Register" />
+          <EntitySet Name="Users" EntityType="DB_A9_SoftwareModel.User" />
+          <EntitySet Name="sysdiagrams" EntityType="DB_A9_SoftwareModel.sysdiagram" />
+          <AssociationSet Name="GROUPID" Association="DB_A9_SoftwareModel.GROUPID">
+            <End Role="GROUP" EntitySet="GROUPs" />
+            <End Role="Group_User" EntitySet="Group_User" />
+          </AssociationSet>
+          <AssociationSet Name="USER_ID_USER_FKY" Association="DB_A9_SoftwareModel.USER_ID_USER_FKY">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Group_User" EntitySet="Group_User" />
+          </AssociationSet>
+          <AssociationSet Name="USER_REGISTER_ID" Association="DB_A9_SoftwareModel.USER_REGISTER_ID">
+            <End Role="Register" EntitySet="Registers" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenderCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="GenderName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GROUP">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="AdminId" Type="Int32" />
+          <Property Name="GroupMember" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="LOGO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ISTACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Group_User" Relationship="DB_A9_SoftwareModel.GROUPID" FromRole="GROUP" ToRole="Group_User" />
+        </EntityType>
+        <EntityType Name="Group_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Group_ID" Type="Int32" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" />
+          <NavigationProperty Name="GROUP" Relationship="DB_A9_SoftwareModel.GROUPID" FromRole="Group_User" ToRole="GROUP" />
+          <NavigationProperty Name="User" Relationship="DB_A9_SoftwareModel.USER_ID_USER_FKY" FromRole="Group_User" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ImageGallery">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSize" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImageDate" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedON" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedON" Type="DateTime" Precision="3" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Register">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CanLogin" Type="Boolean" Nullable="false" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="DB_A9_SoftwareModel.USER_REGISTER_ID" FromRole="Register" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CanLogin" Type="Boolean" Nullable="false" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="Register_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group_User" Relationship="DB_A9_SoftwareModel.USER_ID_USER_FKY" FromRole="User" ToRole="Group_User" />
+          <NavigationProperty Name="Register" Relationship="DB_A9_SoftwareModel.USER_REGISTER_ID" FromRole="User" ToRole="Register" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="GROUPID">
+          <End Type="DB_A9_SoftwareModel.GROUP" Role="GROUP" Multiplicity="0..1" />
+          <End Type="DB_A9_SoftwareModel.Group_User" Role="Group_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUP">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group_User">
+              <PropertyRef Name="Group_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USER_ID_USER_FKY">
+          <End Type="DB_A9_SoftwareModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DB_A9_SoftwareModel.Group_User" Role="Group_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group_User">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USER_REGISTER_ID">
+          <End Type="DB_A9_SoftwareModel.Register" Role="Register" Multiplicity="1" />
+          <End Type="DB_A9_SoftwareModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Register">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Register_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A9_SoftwareModelStoreContainer" CdmEntityContainer="DB_A9_SoftwareEntities4">
+          <FunctionImportMapping FunctionImportName="Updating_Contact" FunctionName="DB_A9_SoftwareModel.Store.Updating_Contact" />
+          <FunctionImportMapping FunctionImportName="Updating_User" FunctionName="DB_A9_SoftwareModel.Store.Updating_User" />
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+                <ScalarProperty Name="GenderCode" ColumnName="GenderCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GROUPs">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.GROUP">
+              <MappingFragment StoreEntitySet="GROUP">
+                <ScalarProperty Name="ISTACTIVE" ColumnName="ISTACTIVE" />
+                <ScalarProperty Name="LOGO" ColumnName="LOGO" />
+                <ScalarProperty Name="GroupMember" ColumnName="GroupMember" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_User">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.Group_User">
+              <MappingFragment StoreEntitySet="Group_User">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageGalleries">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.ImageGallery">
+              <MappingFragment StoreEntitySet="ImageGallery">
+                <ScalarProperty Name="ImageDate" ColumnName="ImageDate" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ImageSize" ColumnName="ImageSize" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lookups">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.Lookup">
+              <MappingFragment StoreEntitySet="Lookup">
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="UpdatedON" ColumnName="UpdatedON" />
+                <ScalarProperty Name="CreatedON" ColumnName="CreatedON" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registers">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.Register">
+              <MappingFragment StoreEntitySet="Register">
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="CanLogin" ColumnName="CanLogin" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Register_Id" ColumnName="Register_Id" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="CanLogin" ColumnName="CanLogin" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_A9_SoftwareModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

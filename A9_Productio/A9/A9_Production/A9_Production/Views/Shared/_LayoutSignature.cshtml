@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "_LayoutSignature";
+}
+
+<div id="signature"class="row">
+    <div class="col-md-1 pull-right">
+
+        <p id="Copy_Rigth" class="pull-right col-md-offset-0">&copy;<img src="~/Images/A9Software.jpg" id="Signature" /> </p>
+    </div>
+</div>
+
+
+<style>
+    .glyphicon-apple {
+        color: #ffffff;
+        font-size: x-large;
+    }
+
+    #Copy_Rigth {
+        margin-left: 120px;
+        font-size: X-large;
+        font: bolder;
+        color: #df691a;
+    }
+
+    #Signature {
+        width: 400px;
+        height: 260px;
+        background: transparent;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $("#signature").css('margin-top', 300);
+
+    })
+</script>

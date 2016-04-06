@@ -1,0 +1,87 @@
+﻿<br />
+<br />
+<br />
+<br />
+<br />
+@model A9_Production.User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div id="Login" class="jumbotron  effect4">
+    <div class="form-group " >
+      
+         <div class="row">         
+        <div class="col-md-4 glyphicon glyphicon-user">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @Id="UserName", @class = "form-control username", @style = "width:80px;height:60px; box-shadow:10px 10px 5px #888888;" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+        </div>
+           
+    </div>
+        </div>
+        <div class="row">
+    <div class="form-group">
+      
+        <div class="col-md-4 glyphicon glyphicon-log-in" >
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new {@Id="Password", @class = "form-control", @type = "Password", @style = "width:80px;height:60px;" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+        </div>
+            </div>
+        <div class="row">
+    <div class="form-group">
+        <div >
+            <input id="Loginbtn"type="submit" value="Login" class="btn btn-success col-md-8"  style="width:200px; height:40px;font-family:'Times New Roman';font-size:24px;" />
+        </div>
+    </div>
+        </div>
+        </div>
+    
+    <style>
+        .k-textbox{
+
+            width:200px;
+            height:40px;
+            font-size:large;
+
+        }
+        .glyphicon-user{
+            font-size:x-large;
+        }
+        .glyphicon-log-in{  
+            font-size:x-large;
+        }
+       
+        
+
+
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#Login").css('margin-top', 100);
+            $('#Loginbtn').css('margin-left', 60);
+            $('#Loginbtn').css('margin-top', 15);
+
+        });
+
+
+
+    </script>
+    
+
+}
+
+
+@section Scripts{    
+    @Scripts.Render("~/bundles/jquery")   
+    }

@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Creative_InnovationsModelStoreContainer" CdmEntityContainer="Creative_InnovationsEntities">
+    <FunctionImportMapping FunctionImportName="Creating_Contact" FunctionName="Creative_InnovationsModel.Store.Creating_Contact" />
+    <FunctionImportMapping FunctionImportName="Creating_User" FunctionName="Creative_InnovationsModel.Store.Creating_User" />
+    <EntitySetMapping Name="Attachments">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Attachment">
+        <MappingFragment StoreEntitySet="Attachment">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="All_Files" ColumnName="All_Files" />
+          <ScalarProperty Name="PSD_Extensions" ColumnName="PSD_Extensions" />
+          <ScalarProperty Name="XcelSheets" ColumnName="XcelSheets" />
+          <ScalarProperty Name="PPT" ColumnName="PPT" />
+          <ScalarProperty Name="Doc_Files" ColumnName="Doc_Files" />
+          <ScalarProperty Name="TextFiles" ColumnName="TextFiles" />
+          <ScalarProperty Name="Html_Files" ColumnName="Html_Files" />
+          <ScalarProperty Name="ZipFiles" ColumnName="ZipFiles" />
+          <ScalarProperty Name="Video_Files" ColumnName="Video_Files" />
+          <ScalarProperty Name="Mp_Three" ColumnName="Mp_Three" />
+          <ScalarProperty Name="Pdf_Files" ColumnName="Pdf_Files" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankTransfers">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.BankTransfer">
+        <MappingFragment StoreEntitySet="BankTransfer">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IFSC_Code" ColumnName="IFSC_Code" />
+          <ScalarProperty Name="Swift_Code" ColumnName="Swift_Code" />
+          <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+          <ScalarProperty Name="Account_Number" ColumnName="Account_Number" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Card_Type">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Card_Type">
+        <MappingFragment StoreEntitySet="Card_Type">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="Expiry_Date" ColumnName="Expiry_Date" />
+          <ScalarProperty Name="Name_On_Card" ColumnName="Name_On_Card" />
+          <ScalarProperty Name="Card_Number" ColumnName="Card_Number" />
+          <ScalarProperty Name="Card_Type1" ColumnName="Card_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Updated_On" ColumnName="Updated_On" />
+          <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Lookup_Id" ColumnName="Lookup_Id" />
+          <ScalarProperty Name="Role_Code" ColumnName="Role_Code" />
+          <ScalarProperty Name="IsUser" ColumnName="IsUser" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Can_Login" ColumnName="Can_Login" />
+          <ScalarProperty Name="Register_Id" ColumnName="Register_Id" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LandLine" ColumnName="LandLine" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+          <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Friend_List">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Friend_List">
+        <MappingFragment StoreEntitySet="Friend_List">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FriendName" ColumnName="FriendName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Friends">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Friend">
+        <MappingFragment StoreEntitySet="Friends">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Contact_Id" ColumnName="Contact_Id" />
+          <ScalarProperty Name="Friend_Name" ColumnName="Friend_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genders">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="GENDER_NAME" ColumnName="GENDER_NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GROUPs">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.GROUP">
+        <MappingFragment StoreEntitySet="GROUP">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Attachment_Id" ColumnName="Attachment_Id" />
+          <ScalarProperty Name="Group_Logo" ColumnName="Group_Logo" />
+          <ScalarProperty Name="Friend_Id" ColumnName="Friend_Id" />
+          <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group_User">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Group_User">
+        <MappingFragment StoreEntitySet="Group_User">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Group_Id" ColumnName="Group_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Item">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Specifications" ColumnName="Specifications" />
+          <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items_Category">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Items_Category">
+        <MappingFragment StoreEntitySet="Items_Category">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+          <ScalarProperty Name="Items_Id" ColumnName="Items_Id" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lookups">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Lookup">
+        <MappingFragment StoreEntitySet="Lookup">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Updatedon" ColumnName="Updatedon" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="RollName" ColumnName="RollName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Payment_Type" ColumnName="Payment_Type" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentTypes">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.PaymentType">
+        <MappingFragment StoreEntitySet="PaymentType">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Card_Type" ColumnName="Card_Type" />
+          <ScalarProperty Name="BankTransfer_Id" ColumnName="BankTransfer_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registers">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Register">
+        <MappingFragment StoreEntitySet="Register">
+          <ScalarProperty Name="Lookup_Id" ColumnName="Lookup_Id" />
+          <ScalarProperty Name="Role_Code" ColumnName="Role_Code" />
+          <ScalarProperty Name="Updated_On" ColumnName="Updated_On" />
+          <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+          <ScalarProperty Name="IsUser" ColumnName="IsUser" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Can_Login" ColumnName="Can_Login" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="LandLine" ColumnName="LandLine" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shipping_Address">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.Shipping_Address">
+        <MappingFragment StoreEntitySet="Shipping_Address">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Land_Line" ColumnName="Land_Line" />
+          <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="BuildingNumber" ColumnName="BuildingNumber" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Creative_InnovationsModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsUser" ColumnName="IsUser" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="CanLogin" ColumnName="CanLogin" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Register_Id" ColumnName="Register_Id" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Contact_Id" ColumnName="Contact_Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

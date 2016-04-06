@@ -1,0 +1,68 @@
+﻿
+
+@{
+    ViewBag.Title = "After_Login";
+}
+
+
+
+<div id="AfterLogin"class="jumbotron effect4">
+<div class="row" >
+    <div class="container-fluid">
+
+        
+          <p>  Welcome to A9</p>
+        
+    </div>
+</div>
+    <div class="row" style="margin-top:50px;">
+        <div class="container-fluid">
+           <div id="Registers"></div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#Registers").kendoGrid({
+
+                dataSource: {
+                    datatype: "Json",
+                    transport: {
+
+                        read: {
+                            url: '@Url.Action("Used", "Account")',
+                            datatype: "Json"
+
+                        },
+                        height: 550,
+                        filterable: true,
+                        sortable: true,
+                        pageable: true,
+                    },
+                    columns: [{
+                        field: "firstname ",
+                        title: "first name",
+                        filterable: false
+                    },
+
+                           {
+                               field: "Lastname ",
+                               title: "Lastname  ",
+
+                           }, {
+                               field: "Id",
+                               title: "RegisterID"
+                           }]
+                }
+            });
+
+            $("#AfterLogin").css('margin-top',100);
+        });
+
+
+
+        
+
+    </script>
+
+</div>

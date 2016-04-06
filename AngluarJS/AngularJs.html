@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS</title>
+    <!--<script type="text/javascript" src="angular.min.js"></script>--->
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+      <script type="text/javascript" src="jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <script type="text/javascript" src="AngularjsApp.js"></script>
+    <script type="text/javascript" src="AngularJquery.js"></script>
+    <link href="bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap.min.css" rel="stylesheet"/>
+    <link href="Site.css" rel="stylesheet"/>
+    <link href="bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="AngularJSCss.css" rel="stylesheet"/>
+</head>
+<body ng-controller="MainController">
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar navbar-header">
+            <span id="BrandName" class="navbar-header">AngularJs</span>
+        </div>
+        <div class="navbar-collapse collapse">
+            <div class="nav navbar-nav navbar-right nav-pills">
+            <span id="RightPillMenu">Home</span>
+                </div>
+        </div>
+    </div>
+</div>
+<div id="JumbotronMargin" class="jumbotron effect4">
+<div class="container container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <p>Welcome</p>
+            <div class="row">
+                <div class="col-md-6">{{FirstName}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

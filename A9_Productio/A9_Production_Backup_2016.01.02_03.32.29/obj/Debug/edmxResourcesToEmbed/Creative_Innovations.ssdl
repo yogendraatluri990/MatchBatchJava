@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Creative_InnovationsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attachment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Images" Type="image" />
+    <Property Name="Pdf_Files" Type="varbinary(max)" />
+    <Property Name="Mp_Three" Type="varbinary(max)" />
+    <Property Name="Video_Files" Type="varbinary(max)" />
+    <Property Name="ZipFiles" Type="varbinary(max)" />
+    <Property Name="Html_Files" Type="varbinary(max)" />
+    <Property Name="TextFiles" Type="nvarchar(max)" />
+    <Property Name="Doc_Files" Type="nvarchar(max)" />
+    <Property Name="PPT" Type="nvarchar(max)" />
+    <Property Name="XcelSheets" Type="nvarchar(max)" />
+    <Property Name="PSD_Extensions" Type="nvarchar(max)" />
+    <Property Name="All_Files" Type="varbinary(max)" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="BankTransfer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Account_Name" Type="nvarchar" MaxLength="80" />
+    <Property Name="Account_Number" Type="nvarchar" MaxLength="40" />
+    <Property Name="Bank_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Swift_Code" Type="nvarchar" MaxLength="100" />
+    <Property Name="IFSC_Code" Type="nvarchar" MaxLength="60" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Day" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Card_Type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Card_Type" Type="nvarchar" MaxLength="40" />
+    <Property Name="Card_Number" Type="int" />
+    <Property Name="Name_On_Card" Type="nvarchar" MaxLength="100" />
+    <Property Name="Expiry_Date" Type="date" />
+    <Property Name="CVV" Type="nvarchar" MaxLength="3" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="60" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="60" />
+    <Property Name="Street" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="70" />
+    <Property Name="Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+    <Property Name="LandLine" Type="nvarchar" MaxLength="30" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="60" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Register_Id" Type="int" />
+    <Property Name="Can_Login" Type="bit" />
+    <Property Name="IsAdmin" Type="bit" />
+    <Property Name="IsUser" Type="bit" />
+    <Property Name="Role_Code" Type="int" />
+    <Property Name="Lookup_Id" Type="int" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="80" />
+    <Property Name="Password" Type="nvarchar" MaxLength="80" />
+    <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="80" />
+    <Property Name="Created_On" Type="datetime" />
+    <Property Name="Updated_On" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Country_Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Country_Code" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Friend_List">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FriendName" Type="nvarchar" MaxLength="60" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Friends">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Friend_Name" Type="nvarchar" MaxLength="80" />
+    <Property Name="Contact_Id" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GENDER_NAME" Type="nvarchar" MaxLength="20" />
+    <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GROUP">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Group_Name" Type="nvarchar" MaxLength="80" />
+    <Property Name="Friend_Id" Type="int" />
+    <Property Name="Group_Logo" Type="image" />
+    <Property Name="Attachment_Id" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Group_Id" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Items">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Item_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Specifications" Type="nvarchar(max)" />
+    <Property Name="Price" Type="money" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Items_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category_Id" Type="int" />
+    <Property Name="Category_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Items_Id" Type="int" />
+    <Property Name="Item_Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RollName" Type="nvarchar" MaxLength="60" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="Updatedon" Type="date" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Payment_Type" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankTransfer_Id" Type="int" />
+    <Property Name="Card_Type" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="60" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="60" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="60" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="60" />
+    <Property Name="LandLine" Type="nvarchar" MaxLength="60" />
+    <Property Name="Street" Type="nvarchar" MaxLength="60" />
+    <Property Name="City" Type="nvarchar" MaxLength="60" />
+    <Property Name="Country" Type="nvarchar" MaxLength="40" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="60" />
+    <Property Name="DateofBirth" Type="date" />
+    <Property Name="Password" Type="nvarchar" MaxLength="60" />
+    <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="60" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="60" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Can_Login" Type="bit" />
+    <Property Name="IsAdmin" Type="bit" />
+    <Property Name="IsUser" Type="bit" />
+    <Property Name="Created_On" Type="date" />
+    <Property Name="Updated_On" Type="date" />
+    <Property Name="Role_Code" Type="int" />
+    <Property Name="Lookup_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Shipping_Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="BuildingNumber" Type="nvarchar" MaxLength="60" />
+    <Property Name="Street" Type="nvarchar" MaxLength="80" />
+    <Property Name="City" Type="nvarchar" MaxLength="80" />
+    <Property Name="State" Type="nvarchar" MaxLength="80" />
+    <Property Name="Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Mobile_Number" Type="nvarchar" MaxLength="30" />
+    <Property Name="Land_Line" Type="nvarchar" MaxLength="30" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="60" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact_Id" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Register_Id" Type="int" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="80" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="80" />
+    <Property Name="CanLogin" Type="bit" />
+    <Property Name="IsAdmin" Type="bit" />
+    <Property Name="IsUser" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="UpdatedOn" Type="datetime" />
+  </EntityType>
+  <Association Name="Contact_Id">
+    <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Contact_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Friends_Id">
+    <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+    <End Role="Friends" Type="Self.Friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="Contact_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUP_ATTACHMENT">
+    <End Role="Attachment" Type="Self.Attachment" Multiplicity="0..1" />
+    <End Role="GROUP" Type="Self.GROUP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attachment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GROUP">
+        <PropertyRef Name="Attachment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUP_FRIEND">
+    <End Role="Friends" Type="Self.Friends" Multiplicity="0..1" />
+    <End Role="GROUP" Type="Self.GROUP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Friends">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GROUP">
+        <PropertyRef Name="Friend_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUP_USERID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group_User">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUPUSER_GROUPID">
+    <End Role="GROUP" Type="Self.GROUP" Multiplicity="0..1" />
+    <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUP">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group_User">
+        <PropertyRef Name="Group_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ITEMSCATEGORY_ID">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Items_Category" Type="Self.Items_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Items_Category">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ITEMSCATEGORY_ITEMSID">
+    <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+    <End Role="Items_Category" Type="Self.Items_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Items_Category">
+        <PropertyRef Name="Items_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LookUp_Id">
+    <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+    <End Role="Register" Type="Self.Register" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Register">
+        <PropertyRef Name="Lookup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAYMENT_PAYMENTTYPE">
+    <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Payment_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAYMENTTYPE_BANKTRANSFER">
+    <End Role="BankTransfer" Type="Self.BankTransfer" Multiplicity="0..1" />
+    <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BankTransfer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentType">
+        <PropertyRef Name="BankTransfer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAYMENTTYPE_CARDTYPE">
+    <End Role="Card_Type" Type="Self.Card_Type" Multiplicity="0..1" />
+    <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card_Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentType">
+        <PropertyRef Name="Card_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Register_Id">
+    <End Role="Register" Type="Self.Register" Multiplicity="0..1" />
+    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Register">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="Register_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Registers_Id">
+    <End Role="Register" Type="Self.Register" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Register">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Register_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Role_Id">
+    <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShippingAddress_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Shipping_Address" Type="Self.Shipping_Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shipping_Address">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SHOPPING_USERID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Creating_Contact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Creating_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Creative_InnovationsModelStoreContainer">
+    <EntitySet Name="Attachment" EntityType="Self.Attachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BankTransfer" EntityType="Self.BankTransfer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Card_Type" EntityType="Self.Card_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Friend_List" EntityType="Self.Friend_List" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Friends" EntityType="Self.Friends" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GROUP" EntityType="Self.GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group_User" EntityType="Self.Group_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Items_Category" EntityType="Self.Items_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Register" EntityType="Self.Register" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shipping_Address" EntityType="Self.Shipping_Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Contact_Id" Association="Self.Contact_Id">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="Friends_Id" Association="Self.Friends_Id">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="GROUP_ATTACHMENT" Association="Self.GROUP_ATTACHMENT">
+      <End Role="Attachment" EntitySet="Attachment" />
+      <End Role="GROUP" EntitySet="GROUP" />
+    </AssociationSet>
+    <AssociationSet Name="GROUP_FRIEND" Association="Self.GROUP_FRIEND">
+      <End Role="Friends" EntitySet="Friends" />
+      <End Role="GROUP" EntitySet="GROUP" />
+    </AssociationSet>
+    <AssociationSet Name="GROUP_USERID" Association="Self.GROUP_USERID">
+      <End Role="User" EntitySet="User" />
+      <End Role="Group_User" EntitySet="Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="GROUPUSER_GROUPID" Association="Self.GROUPUSER_GROUPID">
+      <End Role="GROUP" EntitySet="GROUP" />
+      <End Role="Group_User" EntitySet="Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="ITEMSCATEGORY_ID" Association="Self.ITEMSCATEGORY_ID">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Items_Category" EntitySet="Items_Category" />
+    </AssociationSet>
+    <AssociationSet Name="ITEMSCATEGORY_ITEMSID" Association="Self.ITEMSCATEGORY_ITEMSID">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="Items_Category" EntitySet="Items_Category" />
+    </AssociationSet>
+    <AssociationSet Name="LookUp_Id" Association="Self.LookUp_Id">
+      <End Role="Lookup" EntitySet="Lookup" />
+      <End Role="Register" EntitySet="Register" />
+    </AssociationSet>
+    <AssociationSet Name="PAYMENT_PAYMENTTYPE" Association="Self.PAYMENT_PAYMENTTYPE">
+      <End Role="PaymentType" EntitySet="PaymentType" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="PAYMENTTYPE_BANKTRANSFER" Association="Self.PAYMENTTYPE_BANKTRANSFER">
+      <End Role="BankTransfer" EntitySet="BankTransfer" />
+      <End Role="PaymentType" EntitySet="PaymentType" />
+    </AssociationSet>
+    <AssociationSet Name="PAYMENTTYPE_CARDTYPE" Association="Self.PAYMENTTYPE_CARDTYPE">
+      <End Role="Card_Type" EntitySet="Card_Type" />
+      <End Role="PaymentType" EntitySet="PaymentType" />
+    </AssociationSet>
+    <AssociationSet Name="Register_Id" Association="Self.Register_Id">
+      <End Role="Register" EntitySet="Register" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="Registers_Id" Association="Self.Registers_Id">
+      <End Role="Register" EntitySet="Register" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="Role_Id" Association="Self.Role_Id">
+      <End Role="Lookup" EntitySet="Lookup" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="ShippingAddress_UserID" Association="Self.ShippingAddress_UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="Shipping_Address" EntitySet="Shipping_Address" />
+    </AssociationSet>
+    <AssociationSet Name="SHOPPING_USERID" Association="Self.SHOPPING_USERID">
+      <End Role="User" EntitySet="User" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
